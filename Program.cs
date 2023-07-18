@@ -16,30 +16,62 @@ namespace Assignment8
         static void Main(string[] args)
         {
             Program instance = new Program();
-            Console.WriteLine("Enter Employee Type");
-            string type = Console.ReadLine();
-            Console.WriteLine("Enter the number of working hours");
-            int hours = int.Parse(Console.ReadLine());
-            Console.WriteLine("Enter the number of working days");
-            int days = int.Parse(Console.ReadLine());
-            if (type.Equals("HR"))
+            char choice;
+            do
             {
-                Console.WriteLine("Salary : " + instance.calculation(hours,days));
-            }
-            else if (type.Equals("Admin"))
-            {
-                Console.WriteLine("Enter the number of working handles");
-                int handles = int.Parse(Console.ReadLine());
-                Console.WriteLine("Salary : " + instance.calculation(hours,days,handles));
-            }
-            else if (type.Equals("SE"))
-            {
-                Console.WriteLine("Enter the number of working handles");
-                int handles = int.Parse(Console.ReadLine());
-                Console.WriteLine("Enter the number of working extras");
-                int extras = int.Parse(Console.ReadLine());
-                Console.WriteLine("Salary : "+instance.calculation(hours, days, handles,extras));
-            }
+                try
+                {
+                    Console.WriteLine("Choose the Employee Type");
+                    Console.WriteLine("1. HR");
+                    Console.WriteLine("2. Admin");
+                    Console.WriteLine("3. Software Engineer");
+                    int type = int.Parse(Console.ReadLine());
+                    if (type == 1)
+                    {
+                        Console.WriteLine("Enter the number of working hours");
+                        int hours = int.Parse(Console.ReadLine());
+                        Console.WriteLine("Enter the number of working days");
+                        int days = int.Parse(Console.ReadLine());
+                        Console.WriteLine("Salary : " + instance.calculation(hours, days));
+                    }
+                    else if (type == 2)
+                    {
+                        Console.WriteLine("Enter the number of working hours");
+                        int hours = int.Parse(Console.ReadLine());
+                        Console.WriteLine("Enter the number of working days");
+                        int days = int.Parse(Console.ReadLine());
+                        Console.WriteLine("Enter the number of working handles");
+                        int handles = int.Parse(Console.ReadLine());
+                        Console.WriteLine("Salary : " + instance.calculation(hours, days, handles));
+                    }
+                    else if (type == 3)
+                    {
+                        Console.WriteLine("Enter the number of working hours");
+                        int hours = int.Parse(Console.ReadLine());
+                        Console.WriteLine("Enter the number of working days");
+                        int days = int.Parse(Console.ReadLine());
+                        Console.WriteLine("Enter the number of working handles");
+                        int handles = int.Parse(Console.ReadLine());
+                        Console.WriteLine("Enter the number of working extras");
+                        int extras = int.Parse(Console.ReadLine());
+                        Console.WriteLine("Salary : " + instance.calculation(hours, days, handles, extras));
+                    }
+                    else
+                    {
+                        Console.WriteLine("Incorrect Employee Type");
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Error has happened!!! \n" + e.Message);
+                }
+                finally
+                {
+                    Console.WriteLine("Would you like to Check other Employee?");
+                    Console.WriteLine("Click Y to Yes \t Other Key to No");
+                    choice = char.Parse(Console.ReadLine());
+                }
+            } while (choice == 'Y');
         }
     }
 }
